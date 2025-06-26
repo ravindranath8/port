@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Ravindra Nath Prakash, a Data Scientist specializing in AI, machine learning, and generative AI projects.">
+    <meta name="keywords" content="data science portfolio, machine learning, AI, NLP, computer vision, generative AI, data visualization">
+    <meta name="author" content="Ravindra Nath Prakash">
+    <meta property="og:title" content="Ravindra Nath Prakash - Data Science Portfolio">
+    <meta property="og:description" content="Explore innovative AI, machine learning, and generative AI projects by Ravindra Nath Prakash.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aryugyan.com">
+    <title>Ravindra Nath Prakash - Data Science Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #FFFFFF; /* Primary Text */
+            background: #796e75; /* Background */
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Animation  full background colour */ 
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(5, 29, 101, 0.9), rgba(4, 15, 105, 0.9));
+            z-index: -1;
+        }
+
+        .particle {
+            position: fixed;
+            width: 50px;
+            height: 50px; /* Increased from 8px  cirle animation size increase*/
+            background: radial-gradient(circle, #00BFFF 0%, #00FFAB 50%, #8804e6 100%);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+            pointer-events: none;
+            opacity: 0.7;
+            box-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50vw, 50vh) scale(1.5); opacity: 0.4; }
+            100% { transform: translate(100vw, 100vh) scale(1); }
+        }
+
+        /* Generate particles dynamically with CSS */
+        @for $i from 1 through 20 {
+            .particle:nth-child(#{$i}) {
+                left: random(100) + vw;
+                top: random(100) + vh;
+                animation-delay: random(15) + s;
+                animation-duration: 15s + random(10) + s;
+            }
+        }
+
+        nav {
+            background: #0D1117;
+            color: #FFFFFF;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideIn 0.5s ease-out;
+            border-bottom: 1px solid #00BFFF; /* Accent 3 */
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        /*  Updated CSS (logo size बढ़ाने के लिए )*/
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #00FFAB; /* Accent 1 */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 1.5rem;
+        }
+
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a:focus {
+            color: #00BFFF; /* Accent 3 */
+            transform: scale(1.1);
+            outline: none;
+        }
+
+        nav ul li a:focus {
+            outline: 2px solid #00BFFF; /* Accent 3 */
+            outline-offset: 2px;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #00BFFF, #4B0082); /* Accent 3, Accent 2 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #FFFFFF;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #B3B3B3; /* Secondary Text */
+        }
+
+        .btn {
+            background: #FF6EC7; /* Button/Highlight */
+            color: #FFFFFF;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+            border: 2px solid #FF6EC7;
+        }
+
+        .btn:hover, .btn:focus {
+            background: #4B0082; /* Accent 2 */
+            color: #FFFFFF;
+            transform: translateY(-3px);
+            outline: none;
+        }
+
+        .btn:focus {
+            outline: 2px solid #00FFAB; /* Accent 1 */
+            outline-offset: 2px;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            color: #FFFFFF;
+        }
+
+        .profile {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .profile img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 191, 255, 0.3); /* Accent 3 glow */
+        }
+
+        .profile .bio h3 {
+            font-size: 2rem;
+            color: #FFFFFF;
+        }
+
+        .profile .bio p {
+            font-size: 1.1rem;
+            color: #B3B3B3; /* Secondary Text */
+            margin-bottom: 1rem;
+        }
+
+        .profile .contact-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .profile .contact-links a {
+            color: #00BFFF; /* Accent 3 */
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .profile .contact-links a:hover, .profile .contact-links a:focus {
+            color: #00FFAB; /* Accent 1 */
+            outline: none;
+        }
+
+        .profile .contact-links a:focus {
+            outline: 2px solid #00FFAB; /* Accent 1 */
+            outline-offset: 2px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #00BFFF; /* Accent 3 */
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 24px rgba(0, 191, 255, 0.3); /* Accent 3 glow */
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+            filter: brightness(1.1);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #4B0082, #00FFAB); /* Accent 2, Accent 1 */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover::after {
+            opacity: 0.3;
+        }
+
+        .project-card .content {
+            padding: 1.5rem;
+            text-align: left;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #FFFFFF;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: #B3B3B3; /* Secondary Text */
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card .tools {
+            font-size: 0.9rem;
+            color: #B3B3B3; /* Secondary Text */
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card .features {
+            font-size: 0.9rem;
+            color: #B3B3B3; /* Secondary Text */
+            margin-bottom: 1rem;
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: #00BFFF; /* Accent 3 */
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .project-links a:hover, .project-links a:focus {
+            color: #FF6EC7; /* Button/Highlight */
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .project-links a:focus {
+            outline: 2px solid #FF6EC7; /* Button/Highlight */
+            outline-offset: 2px;
+        }
+
+        .skills {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skills h3 {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+        }
+
+        .skills ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .skills li {
+            background: #4B0082; /* Accent 2 */
+            color: #FFFFFF;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: transform 0.3s, background 0.3s;
+            border: 1px solid #00FFAB; /* Accent 1 */
+        }
+
+        .skills li:hover {
+            transform: scale(1.1);
+            background: #00FFAB; /* Accent 1 */
+            color: #0D1117; /* Background */
+        }
+
+        .experience {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .experience .job {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border: 1px solid #00BFFF; /* Accent 3 */
+        }
+
+        .experience .job h3 {
+            font-size: 1.3rem;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience .job p {
+            font-size: 1rem;
+            color: #B3B3B3; /* Secondary Text */
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-posts {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-post {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border: 1px solid #00BFFF; /* Accent 3 */
+        }
+
+        .blog-post h3 {
+            font-size: 1.3rem;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-post a {
+            color: #00BFFF; /* Accent 3 */
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .blog-post a:hover, .blog-post a:focus {
+            color: #FF6EC7; /* Button/Highlight */
+            outline: none;
+        }
+
+        .achievements ul {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+        .achievements li {
+            font-size: 1rem;
+            color: #B3B3B3; /* Secondary Text */
+            margin-bottom: 0.5rem;
+        }
+
+        .resume-download {
+            margin-top: 1rem;
+        }
+
+        .testimonials {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border: 1px solid #00BFFF; /* Accent 3 */
+        }
+
+        .testimonial p {
+            font-size: 1rem;
+            color: #B3B3B3; /* Secondary Text */
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial cite {
+            font-size: 0.9rem;
+            color: #FFFFFF;
+            font-style: italic;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #00BFFF; /* Accent 3 */
+            border-radius: 5px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+        }
+
+        .contact-form button {
+            background: #FF6EC7; /* Button/Highlight */
+            color: #FFFFFF;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .contact-form button:hover, .contact-form button:focus {
+            background: #4B0082; /* Accent 2 */
+            transform: translateY(-3px);
+            outline: none;
+        }
+
+        .contact-form button:focus {
+            outline: 2px solid #00FFAB; /* Accent 1 */
+            outline-offset: 2px;
+        }
+
+        footer {
+            background: #0D1117;
+            color: #B3B3B3; /* Secondary Text */
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid #00BFFF; /* Accent 3 */
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul {
+                justify-content: center;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin: 0 1rem;
+            }
+
+            .profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile img {
+                margin-bottom: 1rem;
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .project-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Generate 20 particles -->
+    <% for (let i = 0; i < 20; i++) { %>
+        <div class="particle" style="left: <%= Math.random() * 100 %>vw; top: <%= Math.random() * 100 %>vh; animation-delay: <%= Math.random() * 15 %>s; animation-duration: <%= 15 + Math.random() * 10 %>s;"></div>
+    <% } %>
+
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="logo">Ravindra Nath Prakash</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Ravindra Nath Prakash</h1>
+            <p>Data Scientist</p>
+            <a href="#projects" class="btn" aria-label="View AI and data science projects">View Projects</a>
+        </div>
+    </section>
+
+    <section id="profile" class="section">
+        <h2>Profile</h2>
+        <div class="profile">
+            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&dpr=1" alt="Professional headshot of Ravindra Nath Prakash">
+            <div class="bio">
+                <h3>Ravindra Nath Prakash</h3>
+                <p>Data Scientist | Machine Learning Engineer</p>
+                <p>Data Scientist with over 3 years of experience in analyzing and interpreting complex data to drive informed business decisions. Skilled in predictive modeling, data visualization, and statistical analysis, with hands-on expertise in Python and SQL. Recently engaged in generative AI projects, leveraging machine learning and natural language processing to create advanced, automated solutions. Based in Hyderabad, Telangana, India.</p>
+                <div class="contact-links">
+                    <a href="mailto:ravindranathprakash@gmail.com" aria-label="Email Ravindra Nath Prakash">Email</a>
+                    <a href="https://linkedin.com/in/ravindra-nath-prakash-653131329" target="_blank" aria-label="LinkedIn profile of Ravindra Nath Prakash">LinkedIn</a>
+                    <a href="https://github.com/ravindranath8" target="_blank" aria-label="GitHub profile of Ravindra Nath Prakash">GitHub</a>
+                    <a href="https://aryugyan.com/" target="_blank" aria-label="Personal website of Ravindra Nath Prakash">Website</a>
+                </div>
+                <p>Languages: English, Hindi | Interests: Playing chess</p>
+                <div class="resume-download">
+                    <a href="resume.pdf" class="btn" download aria-label="Download resume of Ravindra Nath Prakash">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <h2>Professional Experience</h2>
+        <div class="experience">
+            <div class="job">
+                <h3>Junior Data Scientist & Machine Learning Engineer, Sysarket Datasol Pvt. Ltd</h3>
+                <p>09/2022 – Present, Hyderabad, India</p>
+                <p>Extracted actionable insights from complex data using machine learning, statistical analysis, and data visualization. Built predictive models and deployed ML solutions using Python, SQL, Power BI, Tableau, and generative AI models like GPT and DALL•E.</p>
+            </div>
+            <div class="job">
+                <h3>Competitive Exam Instructor, Own Institute and Others</h3>
+                <p>06/2020 – 08/2022</p>
+                <p>Taught Mathematics, Reasoning, and Computer Awareness for SSC, Banking, and JSSC exams, both online and offline.</p>
+            </div>
+            <div class="job">
+                <h3>Data Entry Operator, Alok Industries Textile Company</h3>
+                <p>01/2018 – 04/2020</p>
+                <p>Managed textile inventory records, updated production logs, and assisted in report preparation using Excel.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>My Projects</h2>
+        <div class="projects">
+            <!-- Existing Projects -->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Text+Generation" alt="Text Generation chatbot interface for customer support" id="text-generation-img">
+                <div class="content">
+                    <i class="fas fa-robot"></i>
+                    <h3>Text Generation for Customer Support Automation</h3>
+                    <p>Built an AI-powered chatbot to automate customer support and reduce response time.</p>
+                    <p class="tools">Tools: Python, OpenAI GPT API, TensorFlow, PyTorch, FastAPI</p>
+                    <ul class="features">
+                        <li>Preprocessed customer support transcripts for training.</li>
+                        <li>Fine-tuned GPT for domain-specific responses.</li>
+                        <li>Integrated into a web app with FastAPI, achieving 30% faster response time.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/text-generation" target="_blank" aria-label="GitHub repository for Text Generation">GitHub</a>
+                        <a href="https://text-generation.aryugyan.com" target="_blank" aria-label="Live demo for Text Generation">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Image+Classification" alt="Image Classification system for defect detection">
+                <div class="content">
+                    <i class="fas fa-eye"></i>
+                    <h3>Image Classification for Quality Control</h3>
+                    <p>Automated defect detection in products using real-time image classification.</p>
+                    <p class="tools">Tools: Python, OpenCV, TensorFlow/Keras, AWS, ResNet</p>
+                    <ul class="features">
+                        <li>Applied image preprocessing and augmentation.</li>
+                        <li>Trained CNN with ResNet, achieving high accuracy.</li>
+                        <li>Deployed on AWS Lambda for real-time analysis.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/image-classification" target="_blank" aria-label="GitHub repository for Image Classification">GitHub</a>
+                        <a href="https://image-classification.aryugyan.com" target="_blank" aria-label="Live demo for Image Classification">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Emotion+Recognition" alt="Speech Emotion Recognition interface with visualizations">
+                <div class="content">
+                    <i class="fas fa-microphone"></i>
+                    <h3>AI-Powered Speech Emotion Recognition</h3>
+                    <p>Classified emotions from speech in real-time.</p>
+                    <p class="tools">Tools: Python, Librosa, Scikit-learn, Random Forest, Matplotlib</p>
+                    <ul class="features">
+                        <li>Extracted MFCC, Chroma, and Spectral features.</li>
+                        <li>Achieved 92% accuracy with Random Forest.</li>
+                        <li>Deployed as an interactive web app.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/emotion-recognition" target="_blank" aria-label="GitHub repository for Speech Emotion Recognition">GitHub</a>
+                        <a href="https://emotion-recognition.aryugyan.com" target="_blank" aria-label="Live demo for Speech Emotion Recognition">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Churn+Prediction" alt="Customer Churn Prediction dashboard with charts">
+                <div class="content">
+                    <i class="fas fa-brain"></i>
+                    <h3>Customer Churn Prediction</h3>
+                    <p>Predicts customer churn using machine learning models.</p>
+                    <p class="tools">Tools: Python, Pandas, Scikit-learn, Matplotlib</p>
+                    <ul class="features">
+                        <li>Built Logistic Regression and Random Forest models.</li>
+                        <li>Achieved 85% accuracy in predicting churn.</li>
+                        <li>Visualized churn factors with interactive charts.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/churn-prediction" target="_blank" aria-label="GitHub repository for Customer Churn Prediction">GitHub</a>
+                        <a href="https://churn-prediction.aryugyan.com" target="_blank" aria-label="Live demo for Customer Churn Prediction">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Sentiment+Analysis" alt="Sentiment Analysis dashboard with tweet visualizations">
+                <div class="content">
+                    <i class="fas fa-language"></i>
+                    <h3>Sentiment Analysis</h3>
+                    <p>Analyzes Twitter sentiments using NLP.</p>
+                    <p class="tools">Tools: Python, NLTK, TextBlob, Seaborn</p>
+                    <ul class="features">
+                        <li>Processed 10,000+ tweets for sentiment.</li>
+                        <li>Visualized positive/negative trends.</li>
+                        <li>Integrated VADER for sentiment scoring.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/sentiment-analysis" target="_blank" aria-label="GitHub repository for Sentiment Analysis">GitHub</a>
+                        <a href="https://medium.com/@ravindranath8/sentiment-analysis" target="_blank" aria-label="Blog post for Sentiment Analysis">Blog Post</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=COVID+Data" alt="COVID-19 Data Analysis with interactive visualizations">
+                <div class="content">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>COVID-19 Data Analysis</h3>
+                    <p>Visualizes COVID-19 trends with interactive plots.</p>
+                    <p class="tools">Tools: Python, Pandas, Matplotlib, Plotly</p>
+                    <ul class="features">
+                        <li>Analyzed global infection and recovery data.</li>
+                        <li>Created interactive dashboards with Plotly.</li>
+                        <li>Published on Kaggle with 90% upvotes.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/covid-analysis" target="_blank" aria-label="GitHub repository for COVID-19 Data Analysis">GitHub</a>
+                        <a href="https://kaggle.com/ravindranath8/covid-analysis" target="_blank" aria-label="Kaggle notebook for COVID-19 Data Analysis">Kaggle</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Generative AI Projects Section -->
+            <!--<h3>Generative AI Projects</h3>-->
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=AI+Storyboard+Generator" alt="AI-Powered Storyboard Generator interface">
+                <div class="content">
+                    <i class="fas fa-video"></i>
+                    <h3>AI-Powered Storyboard Generator</h3>
+                    <p>Generates storyboards from text prompts using generative AI.</p>
+                    <p class="tools">Tools: Python, Stable Diffusion, LangChain</p>
+                    <ul class="features">
+                        <li>Converts text descriptions to visual storyboards.</li>
+                        <li>Customizable styles and layouts.</li>
+                        <li>Integrated with API for real-time generation.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/ai-storyboard" target="_blank" aria-label="GitHub repository for AI Storyboard Generator">GitHub</a>
+                        <a href="https://ai-storyboard.aryugyan.com" target="_blank" aria-label="Live demo for AI Storyboard Generator">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Virtual+Interior+Design" alt="Virtual Interior Design Renderer interface">
+                <div class="content">
+                    <i class="fas fa-couch"></i>
+                    <h3>Virtual Interior Design Renderer</h3>
+                    <p>Creates 3D interior designs from user specifications.</p>
+                    <p class="tools">Tools: Python, DALL•E, Blender API</p>
+                    <ul class="features">
+                        <li>Generates realistic room layouts.</li>
+                        <li>Supports furniture placement customization.</li>
+                        <li>Exported as 3D models or images.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/virtual-interior" target="_blank" aria-label="GitHub repository for Virtual Interior Design">GitHub</a>
+                        <a href="https://virtual-interior.aryugyan.com" target="_blank" aria-label="Live demo for Virtual Interior Design">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=AI+Music+Mixer" alt="AI Music Mood Mixer interface">
+                <div class="content">
+                    <i class="fas fa-music"></i>
+                    <h3>AI Music Mood Mixer</h3>
+                    <p>Generates music tracks based on user-selected moods.</p>
+                    <p class="tools">Tools: Python, Magenta, TensorFlow</p>
+                    <ul class="features">
+                        <li>Creates unique audio compositions.</li>
+                        <li>Adjusts tempo and instrumentation.</li>
+                        <li>Exports as MP3 files.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/ai-music-mixer" target="_blank" aria-label="GitHub repository for AI Music Mixer">GitHub</a>
+                        <a href="https://ai-music-mixer.aryugyan.com" target="_blank" aria-label="Live demo for AI Music Mixer">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Text-to-3D+Model" alt="Text-to-3D Model Creator interface">
+                <div class="content">
+                    <i class="fas fa-cube"></i>
+                    <h3>Text-to-3D Model Creator</h3>
+                    <p>Converts text descriptions into 3D models.</p>
+                    <p class="tools">Tools: Python, Gemini, Open3D</p>
+                    <ul class="features">
+                        <li>Generates 3D objects from text input.</li>
+                        <li>Supports export to STL format.</li>
+                        <li>Integrated with 3D printing workflows.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/text-to-3d" target="_blank" aria-label="GitHub repository for Text-to-3D Model">GitHub</a>
+                        <a href="https://text-to-3d.aryugyan.com" target="_blank" aria-label="Live demo for Text-to-3D Model">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Video+Highlight+Generator" alt="AI-Enhanced Video Highlight Generator interface">
+                <div class="content">
+                    <i class="fas fa-film"></i>
+                    <h3>AI-Enhanced Video Highlight Generator</h3>
+                    <p>Extracts and generates highlights from long videos.</p>
+                    <p class="tools">Tools: Python, Stable Diffusion, OpenCV</p>
+                    <ul class="features">
+                        <li>Identifies key moments automatically.</li>
+                        <li>Generates enhanced video clips.</li>
+                        <li>Supports custom duration settings.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/video-highlights" target="_blank" aria-label="GitHub repository for Video Highlight Generator">GitHub</a>
+                        <a href="https://video-highlights.aryugyan.com" target="_blank" aria-label="Live demo for Video Highlight Generator">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Recipe+Image+Creator" alt="Personalized Recipe Image Creator interface">
+                <div class="content">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Personalized Recipe Image Creator</h3>
+                    <p>Generates images of recipes based on ingredients.</p>
+                    <p class="tools">Tools: Python, DALL•E, Streamlit</p>
+                    <ul class="features">
+                        <li>Creates visually appealing food images.</li>
+                        <li>Customizable based on user input.</li>
+                        <li>Integrated with recipe APIs.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/recipe-creator" target="_blank" aria-label="GitHub repository for Recipe Image Creator">GitHub</a>
+                        <a href="https://recipe-creator.aryugyan.com" target="_blank" aria-label="Live demo for Recipe Image Creator">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Fashion+Trend+Predictor" alt="AI Fashion Trend Predictor interface">
+                <div class="content">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>AI Fashion Trend Predictor</h3>
+                    <p>Predicts and generates future fashion trends.</p>
+                    <p class="tools">Tools: Python, Gemini, TensorFlow</p>
+                    <ul class="features">
+                        <li>Analyzes historical fashion data.</li>
+                        <li>Generates trend-based designs.</li>
+                        <li>Supports seasonal forecasting.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/fashion-predictor" target="_blank" aria-label="GitHub repository for Fashion Trend Predictor">GitHub</a>
+                        <a href="https://fashion-predictor.aryugyan.com" target="_blank" aria-label="Live demo for Fashion Trend Predictor">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Dynamic+Logo+Design" alt="Dynamic Logo Design Tool interface">
+                <div class="content">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Dynamic Logo Design Tool</h3>
+                    <p>Generates unique logos based on brand inputs.</p>
+                    <p class="tools">Tools: Python, Stable Diffusion, Next.js</p>
+                    <ul class="features">
+                        <li>Customizable color and style options.</li>
+                        <li>Generates high-resolution logos.</li>
+                        <li>Integrated with branding APIs.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/logo-design" target="_blank" aria-label="GitHub repository for Dynamic Logo Design">GitHub</a>
+                        <a href="https://logo-design.aryugyan.com" target="_blank" aria-label="Live demo for Dynamic Logo Design">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Educational+Infographics" alt="AI-Generated Educational Infographics interface">
+                <div class="content">
+                    <i class="fas fa-chalkboard"></i>
+                    <h3>AI-Generated Educational Infographics</h3>
+                    <p>Creates infographics for educational content.</p>
+                    <p class="tools">Tools: Python, DALL•E, Matplotlib</p>
+                    <ul class="features">
+                        <li>Generates data-driven visuals.</li>
+                        <li>Customizable for different subjects.</li>
+                        <li>Exported as PDF or PNG.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/educational-infographics" target="_blank" aria-label="GitHub repository for Educational Infographics">GitHub</a>
+                        <a href="https://educational-infographics.aryugyan.com" target="_blank" aria-label="Live demo for Educational Infographics">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Virtual+Pet+Designer" alt="Virtual Pet Character Designer interface">
+                <div class="content">
+                    <i class="fas fa-paw"></i>
+                    <h3>Virtual Pet Character Designer</h3>
+                    <p>Generates customizable virtual pet characters.</p>
+                    <p class="tools">Tools: Python, Stable Diffusion, CrewAI</p>
+                    <ul class="features">
+                        <li>Creates unique pet designs.</li>
+                        <li>Supports animation integration.</li>
+                        <li>Exported for gaming applications.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/virtual-pet" target="_blank" aria-label="GitHub repository for Virtual Pet Designer">GitHub</a>
+                        <a href="https://virtual-pet.aryugyan.com" target="_blank" aria-label="Live demo for Virtual Pet Designer">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/300x200/0077cc/fff?text=Portfolio+Background+Image" alt="High-resolution modern background image for portfolio" id="background-image-project">
+                <div class="content">
+                    <i class="fas fa-image"></i>
+                    <h3>Create a High-Resolution Modern Background Image</h3>
+                    <p>Designed a futuristic background image featuring graphs, data points, charts, code snippets, neural network patterns, and AI icons with a dark mode theme using gradients of electric blue, neon purple, and cyber green, subtle glowing effects, and a tech-style grid.</p>
+                    <p class="tools">Tools: Python, DALL•E, Adobe Photoshop</p>
+                    <ul class="features">
+                        <li>Incorporates data science and AI elements.</li>
+                        <li>Utilizes dark mode gradients for a striking look.</li>
+                        <li>Optimized for high-resolution display.</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/ravindranath8/portfolio-background" target="_blank" aria-label="GitHub repository for Portfolio Background Image">GitHub</a>
+                        <a href="https://portfolio-background.aryugyan.com" target="_blank" aria-label="Live demo for Portfolio Background Image">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div class="skills">
+            <h3>Programming & Tools</h3>
+            <ul>
+                <li>Python</li>
+                <li>Git & GitHub</li>
+                <li>Jupyter Notebook</li>
+                <li>VS Code</li>
+                <li>Google Colab</li>
+            </ul>
+            <h3>Data Handling</h3>
+            <ul>
+                <li>Pandas</li>
+                <li>NumPy</li>
+                <li>Matplotlib</li>
+                <li>Seaborn</li>
+                <li>Scikit-learn</li>
+                <li>Feature Engineering</li>
+                <li>EDA</li>
+            </ul>
+            <h3>Machine Learning</h3>
+            <ul>
+                <li>Linear Regression</li>
+                <li>Logistic Regression</li>
+                <li>SVM</li>
+                <li>Random Forest</li>
+                <li>XGBoost</li>
+                <li>LightGBM</li>
+                <li>K-Means</li>
+                <li>DBSCAN</li>
+                <li>Cross-Validation</li>
+                <li>Confusion Matrix</li>
+                <li>ROC-AUC</li>
+                <li>F1 Score</li>
+                <li>RMSE</li>
+            </ul>
+            <h3>Computer Vision</h3>
+            <ul>
+                <li>Image Classification</li>
+                <li>Object Detection</li>
+                <li>YOLO</li>
+                <li>SSD</li>
+                <li>Faster R-CNN</li>
+                <li>OpenCV</li>
+                <li>PIL</li>
+                <li>Image Augmentation</li>
+                <li>CNN</li>
+                <li>ResNet</li>
+                <li>MobileNet</li>
+                <li>Transfer Learning</li>
+            </ul>
+            <h3>Web Development & App Integration</h3>
+            <ul>
+                <li>Next.js</li>
+                <li>Streamlit</li>
+                <li>RESTful APIs</li>
+            </ul>
+            <h3>Model Deployment & MLOps</h3>
+            <ul>
+                <li>Docker</li>
+                <li>FastAPI</li>
+                <li>Streamlit</li>
+                <li>Heroku</li>
+                <li>Render</li>
+                <li>GitHub Actions</li>
+                <li>MLflow</li>
+                <li>Weights & Biases</li>
+            </ul>
+            <h3>Generative AI & AI Agents</h3>
+            <ul>
+                <li>Gemini</li>
+                <li>DALL•E</li>
+                <li>Stable Diffusion</li>
+                <li>LangChain</li>
+                <li>AutoGPT</li>
+                <li>CrewAI</li>
+            </ul>
+            <h3>Math & Statistics</h3>
+            <ul>
+                <li>Linear Algebra</li>
+                <li>Calculus</li>
+                <li>Probability</li>
+                <li>Descriptive Statistics</li>
+                <li>Inferential Statistics</li>
+                <li>Hypothesis Testing</li>
+            </ul>
+            <h3>Deep Learning</h3>
+            <ul>
+                <li>Neural Networks</li>
+                <li>CNNs</li>
+                <li>RNNs</li>
+                <li>LSTM</li>
+                <li>TensorFlow</li>
+                <li>Keras</li>
+                <li>PyTorch</li>
+            </ul>
+            <h3>Natural Language Processing</h3>
+            <ul>
+                <li>Text Preprocessing</li>
+                <li>TF-IDF</li>
+                <li>Word Embeddings</li>
+                <li>Transformers</li>
+                <li>BERT</li>
+                <li>GPT</li>
+                <li>NLTK</li>
+                <li>spaCy</li>
+                <li>Hugging Face Transformers</li>
+            </ul>
+            <h3>Databases & Tools</h3>
+            <ul>
+                <li>MongoDB</li>
+                <li>MySQL</li>
+                <li>PowerBI</li>
+                <li>Tableau</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="blog" class="section">
+        <h2>Blog</h2>
+        <div class="blog-posts">
+            <div class="blog-post">
+                <h3>How I Built a Churn Prediction Model</h3>
+                <p>A detailed guide on using Logistic Regression and Random Forest for churn prediction.</p>
+                <a href="https://medium.com/@ravindranath8/churn-prediction" target="_blank" aria-label="Read blog post on churn prediction">Read on Medium</a>
+            </div>
+            <div class="blog-post">
+                <h3>Top 5 Data Science Interview Questions</h3>
+                <p>Insights and answers to common data science interview questions.</p>
+                <a href="https://medium.com/@ravindranath8/interview-questions" target="_blank" aria-label="Read blog post on data science interview questions">Read on Medium</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="section">
+        <h2>Education & Achievements</h2>
+        <ul class="achievements">
+            <li>Master of Computer Applications (MCA), Dr. C.V. Raman University, Chhattisgarh, 2018 (73%)</li>
+            <li>Bachelor of Computer Applications (BCA), Punjab Technical University, Punjab, 2015 (72%)</li>
+            <li>IBM Data Science Professional Certificate (Coursera)</li>
+            <li>Deep Learning Specialization (Coursera, by Andrew Ng)</li>
+            <li>AWS Certified Solutions Architect (2024)</li>
+        </ul>
+    </section>
+
+    <section id="testimonials" class="section">
+        <h2>Testimonials</h2>
+        <div class="testimonials">
+            <div class="testimonial">
+                <p>"Ravindra's expertise in machine learning transformed our data analytics pipeline."</p>
+                <cite>— John Doe, Data Science Manager</cite>
+            </div>
+            <div class="testimonial">
+                <p>"The AI chatbot developed by Ravindra was a game-changer for our customer support."</p>
+                <cite>— Jane Smith, CTO</cite>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <p>Email: ravindranathprakash@gmail.com</p>
+        <p>Phone: 9576874668</p>
+        <form class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required aria-label="Your name">
+            <input type="email" name="email" placeholder="Your Email" required aria-label="Your email">
+            <textarea name="message" placeholder="Your Message" rows="5" required aria-label="Your message"></textarea>
+            <button type="submit" aria-label="Send message">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Ravindra Nath Prakash. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Debounce function for scroll optimization
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const handleScroll = debounce(() => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight * 0.8) {
+                    section.classList.add('visible');
+                }
+            });
+        }, 100);
+
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>
